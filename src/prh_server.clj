@@ -6,7 +6,7 @@
 (defn init
   "Function to call when web server is initialized."
   []
-  (t/set-level! :debug)
+  (t/set-level! :info)
   (t/set-config! [:appenders :standard-out :enabled?] false)
   (t/set-config! [:appenders :spit :enabled?] true)
   (t/set-config! [:shared-appender-config :spit-filename] "prh-server.log"))
