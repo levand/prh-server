@@ -32,5 +32,5 @@
      {:body "Thanks, Github!"})))
 
 (defn -main [& args]
-  (let [port (Integer. (System/getEnv "PORT"))]
+  (let [port (Integer. (System/getenv "PORT"))]
     (jetty/run-jetty handler {:port port})))
