@@ -9,5 +9,6 @@
                  [org.clojure/data.json "0.2.2"]
                  [ring "1.2.0-RC1"]
                  [com.taoensso/timbre "2.1.2"]]
+  :main prh-server
   :ring {:init prh-server/init
          :handler prh-server/handler})

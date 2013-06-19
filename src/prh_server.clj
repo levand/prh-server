@@ -1,6 +1,7 @@
 (ns prh-server
   (:require [clojure.data.json :as json]
-            [ring.middleware.params :as r]
+            [ring.adapter.jetty :as jetty]
+            [ring.middleware.params :as params]
             [taoensso.timbre :as t]))
 
 (defn init
@@ -18,7 +19,7 @@
 
 (def handler
   "Ring handler function for all requests."
-  (r/wrap-params
+  (params/wrap-params
    (fn
      [req]
      (t/debug req)
@@ -29,3 +30,7 @@
        (catch Exception e
          (t/error e)))
      {:body "Thanks, Github!"})))
+
+(defn -main [& args]
+  (let [port (Integer. (System/getEnv "PORT"))]
+    (jetty/run-jetty handler {:port port})))
